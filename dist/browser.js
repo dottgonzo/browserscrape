@@ -1,30 +1,32 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var service_scraper_1 = require("service-scraper");
-var domscrap = (function (_super) {
-    __extends(domscrap, _super);
-    function domscrap(url, prefix, input) {
-        if (prefix) {
-            _super.call(this, url);
-            this.prefix = prefix;
+function domscrap(o, cb) {
+    function attachall(url, prefix) {
+        try {
+            var tobescraped = new service_scraper_1.default(url);
+            cb(false, tobescraped, false);
         }
-        else {
-            throw Error('no prefix specified!');
+        catch (err) {
+            cb("can't scrape this url", false, err);
         }
     }
-    domscrap.prototype.attachAll = function (o) {
-        document.getElementById(this.prefix + '_title');
-    };
-    domscrap.prototype.attachProp = function (prop, o) {
-        document.getElementById(o.prop_prefix).innerHTML = this.base_params[prop];
-    };
-    return domscrap;
-}(service_scraper_1.default));
+    if (o.url && o.prefix) {
+        attachall(o.url, o.prefix);
+    }
+    else if (o.prefix) {
+        var input_1 = document.getElementById(o.prefix + '_input');
+        input_1.addEventListener('input', function () {
+            if (input_1.value && input_1.value.length && input_1.value.length > 3) {
+                console.log('input changed to: ', input_1.value);
+                attachall(input_1.value, o.prefix);
+            }
+        });
+    }
+    else {
+        throw Error("domscrap conf error");
+    }
+}
 window.domscrap = domscrap;
 
 

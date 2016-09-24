@@ -1,5 +1,0 @@
-"use strict";
-var index_1 = require("./index");
-module.exports = index_1.default;
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImF0dGFjaC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsc0JBQXdCLFNBRXhCLENBQUMsQ0FGZ0M7QUFFakMsaUJBQU8sZUFBVyxDQUFDIiwiZmlsZSI6ImF0dGFjaC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBkb213ZWJzY3JhcCBmcm9tIFwiLi9pbmRleFwiXG5cbmV4cG9ydD1kb213ZWJzY3JhcDsiXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
