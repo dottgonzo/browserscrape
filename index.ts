@@ -13,7 +13,7 @@ interface IAttachOptions {
 function domscrap(o: IAttachOptions, cb: any) {
 
 
-    function attachall(url: string, prefix: string) {
+    function attachall(url: string) {
         try {
             const tobescraped = new scrap(url)
 
@@ -26,15 +26,15 @@ function domscrap(o: IAttachOptions, cb: any) {
 
 
 
-    if (o.url && o.prefix) {
-        attachall(o.url, o.prefix)
+    if (o.url) {
+        attachall(o.url)
     } else if (o.prefix) {
 
-        const input: any = document.getElementById(o.prefix + '_input');
+        const input: any = document.getElementById(o.prefix);
         input.addEventListener('input', function () {
             if (input.value && input.value.length && input.value.length > 3) {
                 console.log('input changed to: ', input.value);
-                attachall(input.value, o.prefix)
+                attachall(input.value)
             }
         });
 

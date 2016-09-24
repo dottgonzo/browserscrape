@@ -2,7 +2,7 @@
 "use strict";
 var service_scraper_1 = require("service-scraper");
 function domscrap(o, cb) {
-    function attachall(url, prefix) {
+    function attachall(url) {
         try {
             var tobescraped = new service_scraper_1.default(url);
             cb(false, tobescraped, false);
@@ -11,15 +11,15 @@ function domscrap(o, cb) {
             cb("can't scrape this url", false, err);
         }
     }
-    if (o.url && o.prefix) {
-        attachall(o.url, o.prefix);
+    if (o.url) {
+        attachall(o.url);
     }
     else if (o.prefix) {
-        var input_1 = document.getElementById(o.prefix + '_input');
+        var input_1 = document.getElementById(o.prefix);
         input_1.addEventListener('input', function () {
             if (input_1.value && input_1.value.length && input_1.value.length > 3) {
                 console.log('input changed to: ', input_1.value);
-                attachall(input_1.value, o.prefix);
+                attachall(input_1.value);
             }
         });
     }
@@ -47,29 +47,25 @@ var scrape = (function () {
                     throw Error('todo');
                 case "www.youtube.com":
                     uid = query.split('v=')[1].split('&')[0];
-                    base_params = {
-                        uid: uid,
-                        provider: 'youtube',
-                        img: 'http://img.youtube.com/vi/' + uid + '/default.jpg',
-                        hqimg: 'http://img.youtube.com/vi/' + uid + '/hqdefault.jpg',
-                        mqimg: 'http://img.youtube.com/vi/' + uid + '/mqdefault.jpg',
-                        sdimg: 'http://img.youtube.com/vi/' + uid + '/sddefault.jpg',
-                        maximg: 'http://img.youtube.com/vi/' + uid + '/maxresdefault.jpg',
-                        url: url
-                    };
+                    base_params.uid = uid;
+                    base_params.provider = 'youtube';
+                    base_params.img = 'http://img.youtube.com/vi/' + uid + '/default.jpg';
+                    base_params.hqimg = 'http://img.youtube.com/vi/' + uid + '/hqdefault.jpg';
+                    base_params.mqimg = 'http://img.youtube.com/vi/' + uid + '/mqdefault.jpg';
+                    base_params.sdimg = 'http://img.youtube.com/vi/' + uid + '/sddefault.jpg';
+                    base_params.maximg = 'http://img.youtube.com/vi/' + uid + '/maxresdefault.jpg';
+                    base_params.url = url;
                     break;
                 case "youtube.com":
                     uid = query.split('v=')[1].split('&')[0];
-                    base_params = {
-                        uid: uid,
-                        provider: 'youtube',
-                        img: 'http://img.youtube.com/vi/' + uid + '/default.jpg',
-                        hqimg: 'http://img.youtube.com/vi/' + uid + '/hqdefault.jpg',
-                        mqimg: 'http://img.youtube.com/vi/' + uid + '/mqdefault.jpg',
-                        sdimg: 'http://img.youtube.com/vi/' + uid + '/sddefault.jpg',
-                        maximg: 'http://img.youtube.com/vi/' + uid + '/maxresdefault.jpg',
-                        url: url
-                    };
+                    base_params.uid = uid;
+                    base_params.provider = 'youtube';
+                    base_params.img = 'http://img.youtube.com/vi/' + uid + '/default.jpg';
+                    base_params.hqimg = 'http://img.youtube.com/vi/' + uid + '/hqdefault.jpg';
+                    base_params.mqimg = 'http://img.youtube.com/vi/' + uid + '/mqdefault.jpg';
+                    base_params.sdimg = 'http://img.youtube.com/vi/' + uid + '/sddefault.jpg';
+                    base_params.maximg = 'http://img.youtube.com/vi/' + uid + '/maxresdefault.jpg';
+                    base_params.url = url;
                     break;
                 default:
                     throw Error('provider is not supported');
