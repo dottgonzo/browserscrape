@@ -28,6 +28,20 @@ function domscrap(o: IAttachOptions, cb: any) {
 
     if (o.url) {
         attachall(o.url)
+
+        if (o.prefix) {
+
+            const input: any = document.getElementById(o.prefix);
+            input.addEventListener('input', function () {
+                if (input.value && input.value.length && input.value.length > 3) {
+                    console.log('input changed to: ', input.value);
+                    attachall(input.value)
+                }
+            });
+
+        }
+
+
     } else if (o.prefix) {
 
         const input: any = document.getElementById(o.prefix);

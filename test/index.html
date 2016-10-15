@@ -36,7 +36,7 @@
     <script> 
     var prefix='scrape0'
 var scrapeobj = {
-   // url:'https://www.youtube.com/watch?v=KIv5SdiXtss',
+    url:'https://www.youtube.com/watch?v=KIv5SdiXtss',
     prefix:prefix+'_input'
 }
 
@@ -46,7 +46,7 @@ if(err){
       document.getElementById(prefix + '_url').innerHTML = '';
             document.getElementById(prefix + '_img').setAttribute("src", '');
 
-console.warn(err)
+console.warn(err,stderr)
 } else{
   document.getElementById(prefix + '_url').innerHTML = tobescraped.base_params.url;
             document.getElementById(prefix + '_img').setAttribute("src", tobescraped.base_params.img);

@@ -13,13 +13,22 @@ function domscrap(o, cb) {
     }
     if (o.url) {
         attachall(o.url);
+        if (o.prefix) {
+            var input_1 = document.getElementById(o.prefix);
+            input_1.addEventListener('input', function () {
+                if (input_1.value && input_1.value.length && input_1.value.length > 3) {
+                    console.log('input changed to: ', input_1.value);
+                    attachall(input_1.value);
+                }
+            });
+        }
     }
     else if (o.prefix) {
-        var input_1 = document.getElementById(o.prefix);
-        input_1.addEventListener('input', function () {
-            if (input_1.value && input_1.value.length && input_1.value.length > 3) {
-                console.log('input changed to: ', input_1.value);
-                attachall(input_1.value);
+        var input_2 = document.getElementById(o.prefix);
+        input_2.addEventListener('input', function () {
+            if (input_2.value && input_2.value.length && input_2.value.length > 3) {
+                console.log('input changed to: ', input_2.value);
+                attachall(input_2.value);
             }
         });
     }
@@ -34,7 +43,7 @@ window.domscrap = domscrap;
 "use strict";
 var scrape = (function () {
     function scrape(url) {
-        var base_params;
+        var base_params = {};
         if (url.split('//').length < 2) {
             throw Error('please give a valid url');
         }

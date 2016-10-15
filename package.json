@@ -1,6 +1,6 @@
 {
   "name": "browserscrape",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Scrape pages from browser",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,6 @@
     "typescript": "^2.0.3"
   },
   "dependencies": {
-    "service-scraper": "0.0.2"
+    "service-scraper": "0.0.3"
   }
 }
