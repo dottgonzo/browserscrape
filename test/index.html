@@ -27,6 +27,11 @@
     <br> url: <span id="scrape0_url"></span>
     <br> description: <span id="scrape0_text"></span>
     <br> img: <img id="scrape0_img">
+
+<iframe id="scrape0_iframe_src" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
+
+
     <br>
 
 
@@ -50,6 +55,7 @@ console.warn(err,stderr)
 } else{
   document.getElementById(prefix + '_url').innerHTML = tobescraped.base_params.url;
             document.getElementById(prefix + '_img').setAttribute("src", tobescraped.base_params.img);
+      document.getElementById(prefix + '_iframe_src').setAttribute("src", tobescraped.base_params.iframe_src) ;
 
 }
 })

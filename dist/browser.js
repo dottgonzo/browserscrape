@@ -64,6 +64,7 @@ var scrape = (function () {
                     base_params.sdimg = 'http://img.youtube.com/vi/' + uid + '/sddefault.jpg';
                     base_params.maximg = 'http://img.youtube.com/vi/' + uid + '/maxresdefault.jpg';
                     base_params.url = url;
+                    base_params.iframe_src = 'http://youtube.com/embed/' + uid;
                     break;
                 case "youtube.com":
                     uid = query.split('v=')[1].split('&')[0];
@@ -75,6 +76,7 @@ var scrape = (function () {
                     base_params.sdimg = 'http://img.youtube.com/vi/' + uid + '/sddefault.jpg';
                     base_params.maximg = 'http://img.youtube.com/vi/' + uid + '/maxresdefault.jpg';
                     base_params.url = url;
+                    base_params.iframe_src = 'https://youtube.com/embed/' + uid;
                     break;
                 default:
                     throw Error('provider is not supported');
